@@ -11,7 +11,18 @@ const App = () => {
           <img src={moonIcon} alt="moon icon." />
         </button>
       </header>
-      <main>main</main>
+      <main>
+        <section className="my-10 text-center">
+          <h1 className="text-[34px] font-bold leading-[-1px] text-[#091540] mb-6">
+            Extensions List
+          </h1>
+          <ul>
+            <li>All</li>
+            <li>Active</li>
+            <li>Inactive</li>
+          </ul>
+        </section>
+      </main>
     </>
   );
 };

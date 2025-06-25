@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+
 @import "tailwindcss";
 
 body {
@@ -6,4 +8,5 @@ body {
   margin: 0 1rem;
   margin-top: 20px;
   margin-bottom: 64px;
+  font-family: "Noto Sans", sans-serif;
 }
