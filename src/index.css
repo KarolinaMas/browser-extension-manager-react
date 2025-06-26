@@ -2,6 +2,12 @@
 
 @import "tailwindcss";
 
+@theme {
+  --color-neutral-0: #fbfdfe;
+  --color-neutral-200: #d6e2f5;
+  --color-neutral-900: #091540;
+}
+
 body {
   background: linear-gradient(180deg, #ebf2fc 0%, #eefbf9 100%) no-repeat;
   height: 100vh;
