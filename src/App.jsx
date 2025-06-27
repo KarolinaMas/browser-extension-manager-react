@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import logo from "./assets/logo.svg";
 import moonIcon from "./assets/icons/icon-moon.svg";
 import ExtensionItem from "./components/ExtensionItem";
+import data from "./data.json";
 
 const App = () => {
+  const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    setItems(data);
+  }, []);
+
   return (
     <>
       <header className="flex items-center bg-neutral-0 px-3 py-2 rounded-[10px] border-1 border-neutral-200 shadow-[0px_2px_3px_0px_rgba(217,229,244,1)]">
@@ -29,8 +36,10 @@ const App = () => {
             </li>
           </ul>
         </section>
-        <section>
-          <ExtensionItem />
+        <section className="grid grid-cols-1 gap-3 place-items-center">
+          {items.map((item) => (
+            <ExtensionItem key={item.name} {...item} />
+          ))}
         </section>
       </main>
     </>

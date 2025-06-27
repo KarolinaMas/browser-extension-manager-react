@@ -10,7 +10,7 @@
 
 body {
   background: linear-gradient(180deg, #ebf2fc 0%, #eefbf9 100%) no-repeat;
-  height: 100vh;
+  height: 100%;
   margin: 0 1rem;
   margin-top: 20px;
   margin-bottom: 64px;
