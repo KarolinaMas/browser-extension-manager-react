@@ -9,6 +9,11 @@ import { UserContext } from "./context";
 const App = () => {
   const [allItems, setAllItems] = useState([]);
   const [items, setItems] = useState([]);
+  const [listItems, setListItems] = useState([
+    { name: "All", isOn: true },
+    { name: "Active", isOn: false },
+    { name: "Inactive", isOn: false },
+  ]);
 
   useEffect(() => {
     setItems(data);
@@ -43,6 +48,22 @@ const App = () => {
     );
   };
 
+  const handleListItemClick = (name) => {
+    setListItems((prev) =>
+      prev.map((item) =>
+        item.name === name ? { ...item, isOn: true } : { ...item, isOn: false }
+      )
+    );
+
+    if (name === "All") {
+      insertAllItems();
+    } else if (name === "Active") {
+      insertActiveItems();
+    } else {
+      insertInactiveItems();
+    }
+  };
+
   return (
     <>
       <header className="flex items-center bg-neutral-0 px-3 py-2 rounded-[10px] border-1 border-neutral-200 shadow-[0px_2px_3px_0px_rgba(217,229,244,1)]">
@@ -57,13 +78,15 @@ const App = () => {
             Extensions List
           </h1>
           <ul className="flex gap-3">
-            <FilterListItem handleClick={insertAllItems}>All</FilterListItem>
-            <FilterListItem handleClick={insertActiveItems}>
-              Active
-            </FilterListItem>
-            <FilterListItem handleClick={insertInactiveItems}>
-              Inactive
-            </FilterListItem>
+            {listItems.map(({ name, isOn }) => (
+              <FilterListItem
+                key={name}
+                handleClick={() => handleListItemClick(name)}
+                isActive={isOn}
+              >
+                {name}
+              </FilterListItem>
+            ))}
           </ul>
         </section>
         <section className="grid grid-cols-1 gap-3 place-items-center">
