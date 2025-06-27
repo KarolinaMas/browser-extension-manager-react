@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import ToggleSwitch from "./ToggleSwitch";
 
-const ExtensionItem = ({ logo, name, description }) => {
+const ExtensionItem = ({ logo, name, description, isActive }) => {
+  const [active, setActive] = useState(isActive);
+  const handleToggle = () => {
+    setActive(!isActive);
+  };
   return (
     <div className="bg-neutral-0 p-5 rounded-[20px] max-w-[343px] min-h-[200px] flex flex-col justify-between border-1 border-neutral-200 shadow-[0px_2px_3px_0px_rgba(217,229,244,1)]">
       <div className="flex gap-4 align-top">
@@ -23,9 +27,7 @@ const ExtensionItem = ({ logo, name, description }) => {
         <button className="text-neutral-900 tracking-[-0.5px] py-2 px-4 border-1 border-neutral-300 rounded-full">
           Remove
         </button>
-        <ToggleSwitch
-          onToggle={(val) => console.log("Toggle is", val ? "on" : "off")}
-        />
+        <ToggleSwitch isActive={active} onToggle={handleToggle} />
       </div>
     </div>
   );

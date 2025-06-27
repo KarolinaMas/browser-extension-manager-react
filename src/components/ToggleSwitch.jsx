@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 
-const ToggleSwitch = ({ initial = false, onToggle }) => {
-  const [checked, setChecked] = useState(initial);
+const ToggleSwitch = ({ isActive, onToggle }) => {
+  const [checked, setChecked] = useState(isActive);
 
   const handleChange = () => {
-    const newValue = !checked;
-    setChecked(newValue);
-    if (onToggle) onToggle(newValue);
+    setChecked(!checked);
+    onToggle();
   };
 
   return (

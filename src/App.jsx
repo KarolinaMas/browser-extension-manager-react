@@ -3,12 +3,27 @@ import logo from "./assets/logo.svg";
 import moonIcon from "./assets/icons/icon-moon.svg";
 import ExtensionItem from "./components/ExtensionItem";
 import data from "./data.json";
+import FilterListItem from "./components/FilterListItem";
 
 const App = () => {
   const [items, setItems] = useState([]);
 
-  useEffect(() => {
+  const insertAllItems = () => {
     setItems(data);
+  };
+
+  const insertActiveItems = () => {
+    const activeItems = data.filter((item) => item.isActive);
+    setItems(activeItems);
+  };
+
+  const insertInactiveItems = () => {
+    const inactiveItems = data.filter((item) => !item.isActive);
+    setItems(inactiveItems);
+  };
+
+  useEffect(() => {
+    insertAllItems();
   }, []);
 
   return (
@@ -25,15 +40,13 @@ const App = () => {
             Extensions List
           </h1>
           <ul className="flex gap-3">
-            <li className="bg-neutral-0 px-5 pt-2 pb-2.5 text-neutral-900 text-[20px] rounded-full border-1 border-neutral-200 shadow-[0px_1px_2px_0px_rgba(217,229,244,1)] hover:bg-red-700 hover:text-neutral-0">
-              All
-            </li>
-            <li className="bg-neutral-0 px-5 pt-2 pb-2.5 text-neutral-900 text-[20px] rounded-full border-1 border-neutral-200 shadow-[0px_1px_2px_0px_rgba(217,229,244,1)] hover:bg-red-700 hover:text-neutral-0">
+            <FilterListItem handleClick={insertAllItems}>All</FilterListItem>
+            <FilterListItem handleClick={insertActiveItems}>
               Active
-            </li>
-            <li className="bg-neutral-0 px-5 pt-2 pb-2.5 text-neutral-900 text-[20px] rounded-full border-1 border-neutral-200 shadow-[0px_1px_2px_0px_rgba(217,229,244,1)] hover:bg-red-700 hover:text-neutral-0">
+            </FilterListItem>
+            <FilterListItem handleClick={insertInactiveItems}>
               Inactive
-            </li>
+            </FilterListItem>
           </ul>
         </section>
         <section className="grid grid-cols-1 gap-3 place-items-center">
