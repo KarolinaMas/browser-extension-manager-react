@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { UserContext } from "../context";
 
-const ToggleSwitch = ({ isActive, onToggle }) => {
+const ToggleSwitch = () => {
+  const [isActive, onToggle] = useContext(UserContext);
+
   const [checked, setChecked] = useState(isActive);
 
   const handleChange = () => {

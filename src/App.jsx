@@ -4,27 +4,44 @@ import moonIcon from "./assets/icons/icon-moon.svg";
 import ExtensionItem from "./components/ExtensionItem";
 import data from "./data.json";
 import FilterListItem from "./components/FilterListItem";
+import { UserContext } from "./context";
 
 const App = () => {
+  const [allItems, setAllItems] = useState([]);
   const [items, setItems] = useState([]);
 
-  const insertAllItems = () => {
+  useEffect(() => {
     setItems(data);
+    setAllItems(data);
+  }, []);
+
+  const insertAllItems = () => {
+    setItems(allItems);
   };
 
   const insertActiveItems = () => {
-    const activeItems = data.filter((item) => item.isActive);
+    const activeItems = allItems.filter((item) => item.isActive);
     setItems(activeItems);
   };
 
   const insertInactiveItems = () => {
-    const inactiveItems = data.filter((item) => !item.isActive);
+    const inactiveItems = allItems.filter((item) => !item.isActive);
     setItems(inactiveItems);
   };
 
-  useEffect(() => {
-    insertAllItems();
-  }, []);
+  const handleToggle = (name) => {
+    setAllItems((prev) =>
+      prev.map((item) =>
+        item.name === name ? { ...item, isActive: !item.isActive } : item
+      )
+    );
+
+    setItems((prev) =>
+      prev.map((item) =>
+        item.name === name ? { ...item, isActive: !item.isActive } : item
+      )
+    );
+  };
 
   return (
     <>
@@ -51,7 +68,12 @@ const App = () => {
         </section>
         <section className="grid grid-cols-1 gap-3 place-items-center">
           {items.map((item) => (
-            <ExtensionItem key={item.name} {...item} />
+            <UserContext.Provider
+              value={[item.isActive, () => handleToggle(item.name)]}
+              key={item.name}
+            >
+              <ExtensionItem {...item} />
+            </UserContext.Provider>
           ))}
         </section>
       </main>
