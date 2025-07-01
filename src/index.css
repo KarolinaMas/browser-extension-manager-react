@@ -2,18 +2,20 @@
 
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --color-neutral-0: #fbfdfe;
   --color-neutral-200: #d6e2f5;
+  --color-neutral-300: #c6c6c6;
+  --color-neutral-600: #535868;
+  --color-neutral-700: #2f364b;
+  --color-neutral-800: #202535;
   --color-neutral-900: #091540;
 }
 
 body {
-  background: linear-gradient(180deg, #ebf2fc 0%, #eefbf9 100%) no-repeat;
   min-height: 100vh;
   height: 100%;
-  margin: 0 1rem;
-  margin-top: 20px;
-  margin-bottom: 64px;
   font-family: "Noto Sans", sans-serif;
 }

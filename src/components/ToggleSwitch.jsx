@@ -21,7 +21,9 @@ const ToggleSwitch = () => {
       />
       <div
         className={`w-9 h-5 rounded-full transition-colors duration-300 ${
-          checked ? "bg-red-700" : "bg-gray-300"
+          checked
+            ? "bg-red-700 dark:bg-red-400"
+            : "bg-neutral-300 dark:bg-neutral-600"
         }`}
       ></div>
       <div
