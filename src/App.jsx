@@ -81,7 +81,7 @@ const App = () => {
   };
 
   return (
-    <div className="bg-gradient-to-b from-[#ebf2fc] to-[#eefbf9] px-4 pt-5 pb-16 dark:from-[#04091B] dark:to-[#091540]">
+    <div className="bg-gradient-to-b from-[#ebf2fc] to-[#eefbf9] px-4 pt-6 pb-16 dark:from-[#04091B] dark:to-[#091540] sm:px-8">
       <header className="flex items-center bg-neutral-0 px-3 py-2 rounded-[10px] border-1 border-neutral-200 shadow-[0px_2px_3px_0px_rgba(217,229,244,1)] dark:bg-neutral-800  dark:shadow-none dark:border-none">
         <img
           src={isDarkMode ? logoDark : logoLight}
@@ -100,11 +100,11 @@ const App = () => {
         </button>
       </header>
       <main>
-        <section className="my-10 block place-items-center">
-          <h1 className="text-[34px] font-bold leading-[-1px] text-neutral-900 mb-6 dark:text-neutral-0">
+        <section className="mt-10 mb-8 block place-items-center md:flex md:items-center">
+          <h1 className="text-[34px] font-bold leading-[-1px] text-neutral-900 mb-6 dark:text-neutral-0 md:m-0">
             Extensions List
           </h1>
-          <ul className="flex gap-3">
+          <ul className="flex gap-3 md:ml-auto">
             {listItems.map(({ name, isOn }) => (
               <FilterListItem
                 key={name}
@@ -116,7 +116,7 @@ const App = () => {
             ))}
           </ul>
         </section>
-        <section className="grid grid-cols-1 gap-3 place-items-center">
+        <section className="grid grid-cols-1 gap-3 place-items-center md:grid-cols-2">
           {items.map((item) => (
             <UserContext.Provider
               value={[item.isActive, () => handleToggle(item.name)]}
