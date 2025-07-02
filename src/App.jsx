@@ -89,7 +89,7 @@ const App = () => {
           className=" h-[41px]"
         />
         <button
-          className="bg-neutral-100 w-[50px] h-[50px] ml-auto flex items-center justify-center rounded-[12px] cursor-pointer hover:bg-neutral-300 dark:bg-neutral-700 dark:hover:bg-neutral-600"
+          className="bg-neutral-100 w-[50px] h-[50px] ml-auto flex items-center justify-center rounded-[12px] cursor-pointer hover:bg-neutral-300 focus:outline-red-400 dark:bg-neutral-700 dark:hover:bg-neutral-600"
           onClick={toggleDarkMode}
         >
           {isDarkMode ? (

@@ -8,6 +8,10 @@ const FilterListItem = ({ handleClick, children, isActive }) => {
   return (
     <li
       onClick={click}
+      tabIndex={0}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") click();
+      }}
       className={`${
         isActive
           ? "bg-red-700 text-neutral-0 hover:bg-red-400 dark:bg-red-400 dark:text-neutral-900 dark:hover:bg-red-500"
