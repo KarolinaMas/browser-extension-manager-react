@@ -61,9 +61,16 @@ const App = () => {
     setAllItems((prev) => prev.filter((item) => item.name !== name));
   };
 
+  useEffect(() => {
+    if (isDarkMode) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [isDarkMode]);
+
   const toggleDarkMode = () => {
-    document.documentElement.classList.toggle("dark");
-    setIsdarkMode(!isDarkMode);
+    setIsdarkMode((prevMode) => !prevMode);
   };
 
   return (
