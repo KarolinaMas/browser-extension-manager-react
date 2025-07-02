@@ -7,7 +7,7 @@ const ExtensionItem = ({ logo, name, description, removeFunc }) => {
       <div className="flex gap-4 align-top">
         <img
           src={logo.replace("./", "/")}
-          alt="img"
+          alt={`${name} icon`}
           className="w-[60px] h-[60px]"
         />
         <span>
@@ -21,6 +21,7 @@ const ExtensionItem = ({ logo, name, description, removeFunc }) => {
       </div>
       <div className="flex justify-between items-center">
         <button
+          aria-label={`Remove ${name} extension`}
           onClick={() => removeFunc()}
           className="text-neutral-900 tracking-[-0.5px] py-2 px-4 border-1 border-neutral-300 rounded-full cursor-pointer hover:bg-red-700 hover:text-neutral-0 dark:text-neutral-0 dark:border-neutral-600 dark:hover:bg-red-400 dark:hover:border-red-400 dark:hover:text-neutral-900 "
         >

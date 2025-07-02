@@ -75,7 +75,7 @@ const App = () => {
 
   return (
     <div className="bg-gradient-to-b from-[#ebf2fc] to-[#eefbf9] min-h-[100vh] px-4 pt-6 pb-16 dark:from-[#04091B] dark:to-[#091540] sm:px-8">
-      <header className="flex items-center bg-neutral-0 max-w-[81vw] mx-auto px-3 py-2 rounded-[10px] border-1 border-neutral-200 shadow-[0px_2px_3px_0px_rgba(217,229,244,1)] dark:bg-neutral-800  dark:shadow-none dark:border-none">
+      <header className="flex items-center bg-neutral-0 max-w-screen-xl mx-auto px-3 py-2 rounded-[10px] border-1 border-neutral-200 shadow-[0px_2px_3px_0px_rgba(217,229,244,1)] dark:bg-neutral-800  dark:shadow-none dark:border-none">
         <img
           src={isDarkMode ? logoDark : logoLight}
           alt="logo."
@@ -92,7 +92,7 @@ const App = () => {
           )}
         </button>
       </header>
-      <main className="max-w-[81vw] mx-auto">
+      <main className="max-w-screen-xl mx-auto">
         <section className="mt-10 mb-8 block place-items-center md:flex md:items-center">
           <h1 className="text-[34px] font-bold leading-[-1px] text-neutral-900 mb-6 dark:text-neutral-0 md:m-0">
             Extensions List
