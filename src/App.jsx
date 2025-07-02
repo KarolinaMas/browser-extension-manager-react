@@ -81,7 +81,7 @@ const App = () => {
   };
 
   return (
-    <div className="bg-gradient-to-b from-[#ebf2fc] to-[#eefbf9] px-4 pt-6 pb-16 dark:from-[#04091B] dark:to-[#091540] sm:px-8">
+    <div className="bg-gradient-to-b from-[#ebf2fc] to-[#eefbf9] min-h-[100vh] px-4 pt-6 pb-16 dark:from-[#04091B] dark:to-[#091540] sm:px-8">
       <header className="flex items-center bg-neutral-0 max-w-[81vw] mx-auto px-3 py-2 rounded-[10px] border-1 border-neutral-200 shadow-[0px_2px_3px_0px_rgba(217,229,244,1)] dark:bg-neutral-800  dark:shadow-none dark:border-none">
         <img
           src={isDarkMode ? logoDark : logoLight}
@@ -89,7 +89,7 @@ const App = () => {
           className=" h-[41px]"
         />
         <button
-          className="dark:bg-neutral-700 bg-neutral-100 w-[50px] h-[50px] ml-auto flex items-center justify-center rounded-[12px] cursor-pointer"
+          className="bg-neutral-100 w-[50px] h-[50px] ml-auto flex items-center justify-center rounded-[12px] cursor-pointer hover:bg-neutral-300 dark:bg-neutral-700 dark:hover:bg-neutral-600"
           onClick={toggleDarkMode}
         >
           {isDarkMode ? (
