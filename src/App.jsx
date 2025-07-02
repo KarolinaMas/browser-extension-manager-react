@@ -26,28 +26,23 @@ const App = () => {
     setAllItems(data);
   }, []);
 
-  const insertAllItems = () => {
-    setItems(allItems);
-  };
+  useEffect(() => {
+    const activeFilter = listItems.find((item) => item.isOn)?.name;
+    let filteredItems = [];
 
-  const insertActiveItems = () => {
-    const activeItems = allItems.filter((item) => item.isActive);
-    setItems(activeItems);
-  };
+    if (activeFilter === "All") {
+      filteredItems = allItems;
+    } else if (activeFilter === "Active") {
+      filteredItems = allItems.filter((item) => item.isActive);
+    } else {
+      filteredItems = allItems.filter((item) => !item.isActive);
+    }
 
-  const insertInactiveItems = () => {
-    const inactiveItems = allItems.filter((item) => !item.isActive);
-    setItems(inactiveItems);
-  };
+    setItems(filteredItems);
+  }, [allItems, listItems]);
 
   const handleToggle = (name) => {
     setAllItems((prev) =>
-      prev.map((item) =>
-        item.name === name ? { ...item, isActive: !item.isActive } : item
-      )
-    );
-
-    setItems((prev) =>
       prev.map((item) =>
         item.name === name ? { ...item, isActive: !item.isActive } : item
       )
@@ -60,19 +55,10 @@ const App = () => {
         item.name === name ? { ...item, isOn: true } : { ...item, isOn: false }
       )
     );
-
-    if (name === "All") {
-      insertAllItems();
-    } else if (name === "Active") {
-      insertActiveItems();
-    } else {
-      insertInactiveItems();
-    }
   };
 
   const removeItem = (name) => {
     setAllItems((prev) => prev.filter((item) => item.name !== name));
-    setItems((prev) => prev.filter((item) => item.name !== name));
   };
 
   const toggleDarkMode = () => {
